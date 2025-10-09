@@ -133,7 +133,7 @@
         }
 
         h1 {
-            font-size: clamp(1rem, 3vw, 3.5rem);
+            font-size: clamp(1rem, 2vw, 3.5rem);
             margin-bottom: 10px;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.4);
             /* Main title color */
@@ -189,27 +189,55 @@
             left: 15px;
         }
 
-        /* Team info section with logo beside it */
+        /* <CHANGE> Enhanced glassmorphism effect for team info section */
         .team-info {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
             padding: 35px;
             margin: 30px 0;
-            /* Section border color - GOLD accent */
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            animation: fadeInUp 1s ease-out 0.2s both;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
             display: flex;
             align-items: center;
             gap: 30px;
             position: relative;
+            overflow: hidden;
+        }
+
+        /* <CHANGE> Glass shimmer effect */
+        .team-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .team-info:hover::before {
+            left: 100%;
         }
 
         .team-info-content {
             flex: 1;
             position: relative;
             z-index: 2;
+        }
+
+        /* <CHANGE> Enhanced text color for better contrast on glass */
+        .team-info-content h2 {
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-info-content p {
+            color: #f0f0f0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .team-info-logo {
@@ -267,25 +295,42 @@
             border-color: #ffd700;
         }
 
+        /* <CHANGE> Enhanced glassmorphism for instructors section */
         .instructors-section {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
             padding: 40px 30px;
             margin: 30px 0;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            animation: fadeInUp 1s ease-out 0.3s both;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
             position: relative;
+            overflow: hidden;
+        }
+
+        .instructors-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .instructors-section:hover::before {
+            left: 100%;
         }
 
         .instructors-section h2 {
             text-align: center;
             font-size: clamp(1.8rem, 4vw, 2.5rem);
             margin-bottom: 40px;
-            /* Heading color - DARK GREEN */
-            color: #0b3d2e;
-            text-shadow: none;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             font-weight: 700;
         }
 
@@ -296,13 +341,18 @@
             margin-top: 30px;
         }
 
+        /* <CHANGE> Enhanced glassmorphism for instructor cards */
         .instructor-card {
-            background: linear-gradient(135deg, rgba(11, 61, 46, 0.05), rgba(20, 90, 50, 0.05));
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
             border-radius: 15px;
             padding: 30px;
             text-align: center;
             transition: all 0.4s ease;
-            border: 2px solid rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
         }
@@ -341,8 +391,8 @@
             transform: translateY(-8px);
             /* Card hover shadow - GOLD glow */
             box-shadow: 0 12px 30px rgba(255, 215, 0, 0.3);
-            background: linear-gradient(135deg, rgba(11, 61, 46, 0.08), rgba(20, 90, 50, 0.08));
-            border-color: #ffd700;
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 215, 0, 0.5);
         }
 
         .instructor-image {
@@ -362,15 +412,16 @@
             font-size: 1.3rem;
             font-weight: 700;
             margin-bottom: 8px;
-            color: #0b3d2e;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .instructor-role {
             font-size: 1rem;
-            /* Role text color */
-            color: #4a5568; /* Medium gray */
+            color: #e0e0e0;
             margin-bottom: 15px;
             font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .linkedin-link {
@@ -407,23 +458,41 @@
             height: 24px;
         }
 
+        /* <CHANGE> Enhanced glassmorphism for sections */
         section {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 20px;
             padding: 35px;
             margin: 30px 0;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            animation: fadeInUp 1s ease-out 0.4s both;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.4);
             position: relative;
+            overflow: hidden;
+        }
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        section:hover::before {
+            left: 100%;
         }
 
         h2 {
             font-size: clamp(1.6rem, 4vw, 2.2rem);
             margin-bottom: 25px;
-            color: #0b3d2e;
-            text-shadow: none;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             font-weight: 700;
             position: relative;
             padding-bottom: 15px;
@@ -447,61 +516,67 @@
             margin-top: 20px;
         }
 
+        /* <CHANGE> Enhanced glassmorphism for link cards */
         .link-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
             border-radius: 12px;
             padding: 25px;
-            border: 2px solid rgba(255, 215, 0, 0.2);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .link-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
-            border-color: #ffd700;
+            border-color: rgba(255, 215, 0, 0.6);
         }
 
         .link-card h3 {
             font-size: 1.2rem;
             margin-bottom: 12px;
-            color: #0b3d2e;
+            color: #ffffff;
             font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .link-card a {
-            /* Link color - MEDIUM GREEN */
-            color: #145a32;
+            color: #ffd700;
             text-decoration: none;
             font-weight: 600;
             transition: color 0.3s ease;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .link-card a:hover {
-            /* Link hover color - GOLD */
-            color: #ffd700;
+            color: #ffed4e;
         }
 
         .schedule {
             margin-top: 20px;
         }
 
+        /* <CHANGE> Enhanced glassmorphism for date cards */
         .date-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px) saturate(180%);
+            -webkit-backdrop-filter: blur(15px) saturate(180%);
             border-radius: 12px;
             padding: 28px;
             margin-bottom: 20px;
-            border: 2px solid rgba(255, 215, 0, 0.2);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .date-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 25px rgba(255, 215, 0, 0.3);
-            border-color: #ffd700;
+            border-color: rgba(255, 215, 0, 0.6);
         }
 
         .date-header {
@@ -516,7 +591,8 @@
         .date-title {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #0b3d2e;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
         .status-badge {
@@ -543,7 +619,8 @@
 
         .date-content p {
             margin-bottom: 10px;
-            color: #4a5568;
+            color: #f0f0f0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .date-content ul {
@@ -554,10 +631,11 @@
 
         .date-content li {
             margin-bottom: 8px;
-            color: #4a5568;
+            color: #e0e0e0;
             display: flex;
             align-items: center;
             gap: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
         }
 
         .checkmark {
@@ -624,6 +702,51 @@
             }
         }
 
+        /* <CHANGE> Scroll reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
         @media (max-width: 768px) {
             .links-grid {
                 grid-template-columns: 1fr;
@@ -682,22 +805,18 @@
             <p class="subtitle">FIRST LEGO League 2025: Submerged</p>
         </header>
 
-        <!-- Team info with logo beside it -->
-        <div class="team-info">
+        <div class="team-info reveal">
             <img src="img/LOGO TMSCA.png" alt="Talcott Mountain Science Center Logo" class="team-info-logo">
             <div class="team-info-content">
                 <h2>Team Information</h2>
                 <p><strong>Team Name:</strong> Talcott Thunders</p>
             </div>
-              </div>
+        </div>
 
-        <div class="instructors-section" id="instructors-section">
+        <div class="instructors-section reveal-scale" id="instructors-section">
             <h2>Instructors & Staff</h2>
-            <!-- Corner decorative images
-            <img src="robot2.jpeg?height=80&width=80" alt="Team Icon" class="corner-image corner-top-left">
--->
             <div class="instructors-grid">
-                <div class="instructor-card">
+                <div class="instructor-card reveal-left">
                     <img src="img/batman.png" alt="Dhiren Dommeti" class="instructor-image">
                     <div class="instructor-name">Dr.Z</div>
                     <div class="instructor-role">Program Director</div>
@@ -708,7 +827,7 @@
                     </a>
                 </div>
 
-                <div class="instructor-card">
+                <div class="instructor-card reveal">
                   <img src="https://media.licdn.com/dms/image/v2/D4E03AQGoiZf-1ObKjg/profile-displayphoto-shrink_200_200/B4EZOYjAqtH0AY-/0/1733431135722?e=1762992000&v=beta&t=z6VDx-tz_Aj4UkPdh2Yzxpn21mPeYThLd_4Kw5QwA4k" alt="Dhiren Dommeti" class="instructor-image">
                   <div class="instructor-name">Dhiren Dommeti</div>
                   <div class="instructor-role">Head Coach</div>
@@ -719,7 +838,7 @@
                     </a>
                 </div>
 
-                <div class="instructor-card">
+                <div class="instructor-card reveal-right">
                     <img src="/placeholder.svg?height=150&width=150" alt="Instructor 3" class="instructor-image">
                     <div class="instructor-name">Instructor Name</div>
                     <div class="instructor-role">Assistant Coach</div>
@@ -731,60 +850,36 @@
                 </div>
             </div>
         </div>
-<!--
-        <section>
-            <h2>Competition Videos</h2>
-            <img src="/placeholder.svg?height=80&width=80" alt="Video" class="corner-image corner-top-right">
-            <img src="/placeholder.svg?height=80&width=80" alt="Play" class="corner-image corner-bottom-left">
 
-            <div class="links-grid">
-                <div class="link-card">
-                    <h3>Robot Game</h3>
-                    <a href="#">View Video →</a>
-                </div>
-                <div class="link-card">
-                    <h3>Innovation Project</h3>
-                    <a href="#">View Video →</a>
-                </div>
-                <div class="link-card">
-                    <h3>Core Values</h3>
-                    <a href="#">View Video →</a>
-                </div>
-            </div>
-        </section>
--->
-        <section>
+        <section class="reveal">
             <h2>Official FLL Resources</h2>
-            <!-- Corner decorative images
-            <img src="/placeholder.svg?height=80&width=80" alt="Ideas" class="corner-image corner-bottom-right">
--->
             <div class="links-grid">
-                <div class="link-card">
+                <div class="link-card reveal-left">
                     <h3>Challenge Overview</h3>
                     <a href="https://www.firstinspires.org/programs/fll/game-and-season">Learn More →</a>
                 </div>
-                <div class="link-card">
+                <div class="link-card reveal">
                     <h3>Robot Game Missions</h3>
                     <a href="https://www.firstinspires.org/resources/library/fll/season-materials">View Missions →</a>
                 </div>
-                <div class="link-card">
+                <div class="link-card reveal">
                     <h3>Innovation Project Guide</h3>
                     <a href="https://www.firstinspires.org/programs/fll/game-and-season">Read Guide →</a>
                 </div>
-                <div class="link-card">
+                <div class="link-card reveal-right">
                     <h3>Core Values</h3>
                     <a href="https://www.firstinspires.org/programs/fll/game-and-season">Explore Values →</a>
                 </div>
             </div>
         </section>
 
-        <section>
+        <section class="reveal-scale">
             <h2>Meeting Schedule - Fall 2025</h2>
-            <!-- Corner decorative images -->
+             Corner decorative images
             <img src="img/robot2.jpg?height=80&width=80" alt="Calendar" class="corner-image corner-top-right">
 
             <div class="schedule">
-                <div class="date-card">
+                <div class="date-card reveal-left">
                     <div class="date-header">
                         <div class="date-title">October 11, 2025</div>
                         <span class="status-badge status-complete">Planned</span>
@@ -803,7 +898,7 @@
                     </div>
                 </div>
 
-                <div class="date-card">
+                <div class="date-card reveal-right">
                     <div class="date-header">
                         <div class="date-title">October 18, 2025</div>
                         <span class="status-badge status-tbd">TBD</span>
@@ -813,7 +908,7 @@
                     </div>
                 </div>
 
-                <div class="date-card">
+                <div class="date-card reveal-left">
                     <div class="date-header">
                         <div class="date-title">October 25, 2025</div>
                         <span class="status-badge status-tbd">TBD</span>
@@ -823,7 +918,7 @@
                     </div>
                 </div>
 
-                <div class="date-card">
+                <div class="date-card reveal-right">
                     <div class="date-header">
                         <div class="date-title">November 1, 2025</div>
                         <span class="status-badge status-tbd">TBD</span>
@@ -833,7 +928,7 @@
                     </div>
                 </div>
 
-                <div class="date-card">
+                <div class="date-card reveal-left">
                     <div class="date-header">
                         <div class="date-title">November 8, 2025</div>
                         <span class="status-badge status-tbd">TBD</span>
@@ -843,7 +938,7 @@
                     </div>
                 </div>
 
-                <div class="date-card">
+                <div class="date-card reveal-right">
                     <div class="date-header">
                         <div class="date-title">November 15, 2025</div>
                         <span class="status-badge status-tbd">TBD</span>
@@ -855,7 +950,7 @@
             </div>
         </section>
 
-        <footer>
+        <footer class="reveal">
             <p>&copy; 2025 <a href="https://talcottscience.org/" target="_blank">Talcott Mountain Science Center for Student Involvement</a>, Inc. All Rights Reserved.</p>
             <p>Developed by <a href="https://www.linkedin.com/in/ddommeti/" target="_blank">Dhiren Dommeti</a></p>
         </footer>
@@ -1013,6 +1108,24 @@
                     target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
+        });
+
+        // <CHANGE> Scroll reveal animation using Intersection Observer
+        const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        revealElements.forEach(element => {
+            revealObserver.observe(element);
         });
     </script>
 </body>
